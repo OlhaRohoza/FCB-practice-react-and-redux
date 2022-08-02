@@ -4,7 +4,10 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { store } from './components/Redux'
+import { legacy_createStore as createStore } from 'redux';
+import { messageReducer } from './components/Redux';
+
+const store = createStore(messageReducer);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

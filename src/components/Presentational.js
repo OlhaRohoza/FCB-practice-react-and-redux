@@ -1,6 +1,8 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { actionAddMessage } from './Redux';
 
-export class Presentational extends React.Component {
+class Presentational extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -46,4 +48,19 @@ export class Presentational extends React.Component {
     }
 }
 
+export const mapStateToProps = (state) => {
+    return {
+        messages: state
+    }
+}
 
+export const mapDispatchToProps = (dispatch) => {
+    return {
+        submitNewMessage: (message) => { dispatch(actionAddMessage(message)) }
+    }
+}
+
+
+
+// const connect = ReactRedux.connect;
+export const Container = connect(mapStateToProps, mapDispatchToProps)(Presentational);
